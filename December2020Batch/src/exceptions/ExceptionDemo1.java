@@ -32,6 +32,11 @@ public class ExceptionDemo1
 				System.out.println("Denominator value should be greater than zero...");
 			}
 			
+			finally 
+			{
+				System.out.println("iam final Block....");
+			}
+			
 			
 		}
 		
