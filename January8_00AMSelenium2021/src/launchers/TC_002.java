@@ -5,9 +5,11 @@ public class TC_002 extends BaseTest
 
 	public static void main(String[] args) throws Exception 
 	{
-		openBrowser("chrome");
+		init();
 		
-		navigateUrl("https://www.amazon.in");
+		openBrowser("firefoxbrowser");
+		
+		navigateUrl("amazonurl");
 				
 		windowMaximize();
 		
