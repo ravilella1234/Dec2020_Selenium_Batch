@@ -7,9 +7,9 @@ public class TC_003 extends BaseTest
 	{
 		init();
 		
-		openBrowser("firefoxbrowser");
+		openBrowser("chromebrowser");
 		
-		navigateUrl("amazonurl");
+		navigateUrl("axisbankurl");
 				
 		//windowMaximize();
 		
