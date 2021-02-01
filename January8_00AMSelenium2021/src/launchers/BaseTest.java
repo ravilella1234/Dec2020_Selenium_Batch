@@ -3,6 +3,7 @@ package launchers;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,7 +20,7 @@ public class BaseTest
 	public static Properties p;
 	public static Properties parentProp;
 	public static Properties childProp;
-	
+	public static Properties orProp;
 	
 	
 	public static void init() throws Exception
@@ -39,6 +40,10 @@ public class BaseTest
 		childProp.load(fis);
 		String url = childProp.getProperty("amazonurl");
 		System.out.println(url);
+		
+		fis = new FileInputStream(projectPath +"//or.properties");
+		orProp = new Properties();
+		orProp.load(fis);
 	}
 	
 	public static void openBrowser(String browser)
@@ -116,6 +121,22 @@ public class BaseTest
 	public static void closeBrowser() 
 	{
 		driver.quit();		
+	}
+	
+	
+	public static void clickElement(String locatorKey) 
+	{
+		driver.findElement(By.xpath(orProp.getProperty(locatorKey))).click();
+	}
+
+	public static void typeText(String locatorKey, String text) 
+	{
+		driver.findElement(By.name(orProp.getProperty(locatorKey))).sendKeys(text);
+	}
+
+	public static void selectOption(String locatorKey, String option) 
+	{
+		driver.findElement(By.id(orProp.getProperty(locatorKey))).sendKeys(option);
 	}
 
 }
