@@ -17,3 +17,5 @@ Navigated to url : https://www.amazon.in
 Selected the option Books By using locator :- searchDropdownBox
 Entered the text Harry Potter By using the locator :- field-keywords
 Clicked onButton by Using locator :-//input[@id='nav-search-submit-button']
+---------------   Test case Started ----------------------
+Loding Property files & configuration files .......
