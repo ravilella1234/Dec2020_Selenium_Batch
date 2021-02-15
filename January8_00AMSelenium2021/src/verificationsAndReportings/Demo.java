@@ -6,6 +6,7 @@ public class Demo {
 	{
 		System.out.println("iam first Line....");
 		System.out.println("iam second Line....");
+		System.out.println("iam Third Line....");
 
 	}
 
