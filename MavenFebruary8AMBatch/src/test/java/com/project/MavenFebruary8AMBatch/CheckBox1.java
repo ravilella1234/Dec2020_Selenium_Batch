@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.LogStatus;
@@ -13,15 +14,16 @@ import com.relevantcodes.extentreports.LogStatus;
 public class CheckBox1 extends BaseTest
 {
   
-	@BeforeMethod
-	  public void beforeMethod() throws Exception 
+	@BeforeMethod(groups = {"regression","smoke"})
+	@Parameters("browser")
+	  public void beforeMethod(String bType) throws Exception 
 	  {
 		  System.out.println("iam beforemethod...");
 		  init();
 		  test = report.startTest("LinksTesting1");
 		  test.log(LogStatus.INFO, "Loding Property files & configuration files .......");
 		  
-		  openBrowser("chromebrowser");
+		  openBrowser(bType);
 		  test.log(LogStatus.PASS, "Opened the browser : " + p.getProperty("chromebrowser"));
 					
 		  navigateUrl("checkboxurl");
@@ -29,7 +31,7 @@ public class CheckBox1 extends BaseTest
 	  }
 	  
 	  
-	@Test
+	@Test(groups = {"regression","smoke"})
 	public void checkboxTest()
 	{
 		List<WebElement> check=driver.findElements(By.xpath("//td[@class='table5']/input[@type='checkbox']"));
@@ -41,7 +43,7 @@ public class CheckBox1 extends BaseTest
 	}
  
 
-  @AfterMethod
+  @AfterMethod(groups = {"regression","smoke"})
   public void afterMethod() 
   {
 	    report.endTest(test);

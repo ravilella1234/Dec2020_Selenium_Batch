@@ -5,27 +5,29 @@ import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.AfterMethod;
 
 public class TNG_004 extends BaseTest
 {
   
-  @BeforeMethod
-  public void startProcess() throws Exception 
+  @BeforeMethod(groups = {"regression","sanity"})
+  @Parameters("browser")
+  public void startProcess(String bType) throws Exception 
   {
 	  System.out.println("iam beforemethod...");
 	  init();
 	  test = report.startTest("TNG_004");
 	  test.log(LogStatus.INFO, "Loding Property files & configuration files .......");
 	  
-	  openBrowser("chromebrowser");
+	  openBrowser(bType);
 	  test.log(LogStatus.PASS, "Opened the browser : " + p.getProperty("chromebrowser"));
 				
 	  navigateUrl("amazonurl");
 	  test.log(LogStatus.FAIL, "Navigated to url : " + childProp.getProperty("amazonurl"));
   }
   
-  @Test
+  @Test(groups = {"regression","sanity"})
   public void amazon()
   {
 	   System.out.println("iam testmethod...");	
@@ -40,7 +42,7 @@ public class TNG_004 extends BaseTest
 		test.log(LogStatus.PASS, "Clicked onButton by Using locator :-" + orProp.getProperty("amazonsearchbutton_xpath")); 
   }
 
-  @AfterMethod
+  @AfterMethod(groups = {"regression","sanity"})
   public void endProcess() 
   {
 	  System.out.println("iam aftermethod...");
