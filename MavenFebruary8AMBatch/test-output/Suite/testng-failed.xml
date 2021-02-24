@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="testngListners.TestNgListner"/>
+    <listener class-name="testngListners.RetryListener"/>
+  </listeners>
   <test thread-count="5" name="Test(failed)">
     <parameter name="browser" value="chrome"/>
-    <groups>
-      <run>
-        <include name="sanity"/>
-      </run>
-    </groups>
     <classes>
       <class name="com.project.MavenFebruary8AMBatch.TNG_004">
         <methods>
           <include name="amazon"/>
+          <include name="startProcess"/>
+          <include name="endProcess"/>
         </methods>
       </class> <!-- com.project.MavenFebruary8AMBatch.TNG_004 -->
     </classes>
