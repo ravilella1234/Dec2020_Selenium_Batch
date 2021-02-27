@@ -3,14 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.project.MavenFebruary8AMBatch.TestDependency">
+      <class name="excelDataDriven.TestA">
         <methods>
-          <include name="white"/>
-          <include name="orange"/>
-          <include name="green"/>
-          <include name="blue"/>
+          <include name="testA"/>
         </methods>
-      </class> <!-- com.project.MavenFebruary8AMBatch.TestDependency -->
+      </class> <!-- excelDataDriven.TestA -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
