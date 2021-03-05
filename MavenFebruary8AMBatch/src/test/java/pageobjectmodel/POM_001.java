@@ -13,6 +13,7 @@ import junit.framework.Assert;
 public class POM_001 extends BaseTest
 {
 	Login obj;
+	CustomerRegistrationPage obj1 ; 
 	
   @BeforeMethod
   @Parameters("browser")
@@ -30,12 +31,19 @@ public class POM_001 extends BaseTest
 	  test.log(LogStatus.FAIL, "Navigated to url : " + childProp.getProperty("amazonurl"));
   }
   
-  @Test
-  public void f() 
+  @Test(enabled = false)
+  public void login() 
   {
 	  obj = new Login(driver);
 	  obj.login();
 	  Assert.assertEquals("Authentication failed.", obj.getLoginError());
+  }
+  
+  @Test
+  public void customerRegistration() throws Exception
+  {
+	  obj1 = new CustomerRegistrationPage(driver);
+	  obj1.customerRegistration();
   }
 
   @AfterMethod
