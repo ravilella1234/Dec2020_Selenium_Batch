@@ -4,9 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.project.MavenFebruary8AMBatch.BaseTest;
 
@@ -51,7 +48,10 @@ public class CustomerRegistrationPage extends BaseTest
 	public void customerRegistration() throws InterruptedException
 	{
 		signIn.click();		
-		custEmail.sendKeys("qatest437041@gmail.com");
+		//custEmail.sendKeys("qatest437041@gmail.com");
+		String customer = p.getProperty("firstname")+p.getProperty("lastname")+ranNumber()+p.getProperty("domain");
+		System.out.println(customer);
+		custEmail.sendKeys(customer);
 		Submit.click();		
 		//Thread.sleep(4000);
 			
@@ -61,9 +61,16 @@ public class CustomerRegistrationPage extends BaseTest
 		FirstName.sendKeys("qa");
 		LastName.sendKeys("test");
 		custPassword.sendKeys("password");		
-		DOB_day.sendKeys("1");
-		DOB_month.sendKeys("March");
-		DOB_year.sendKeys("2019");
+		
+		
+		//DOB_day.sendKeys("1");
+		//DOB_month.sendKeys("March");
+		//DOB_year.sendKeys("2019");
+				
+		selectOption(DOB_day,1);
+		selectOption(DOB_month, 2);
+		selectOption(DOB_year, 3);
+		
 		Address_1.sendKeys("hyderabad");
 		City.sendKeys("hyderabad");
 		State.sendKeys("California");
@@ -73,6 +80,5 @@ public class CustomerRegistrationPage extends BaseTest
 		//submitAccount.click();
 	}
 
-	
 	
 }
