@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest
   {
 	 System.out.println("iam f Method");
 	 
-	 if(td.get(Constants.RUNMODE_COL).equals(Constants.RUNMODE_NO))
+	 if(DataUtils.isSkip(testName, xls) || td.get(Constants.RUNMODE_COL).equals(Constants.RUNMODE_NO))
 		  throw new SkipException("Runmode is set as No...");  
 	  ds.executeKeywords(xls, testName, td);
   }

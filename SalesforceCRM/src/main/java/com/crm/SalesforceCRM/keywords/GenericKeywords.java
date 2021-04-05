@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GenericKeywords 
 {
@@ -54,20 +56,36 @@ public class GenericKeywords
 	{
 		WebElement element = null;
 		
-		if(objectKey.endsWith("_id")) {
-			element = driver.findElement(By.id(orProp.getProperty(objectKey)));
-		}else if(objectKey.endsWith("_name")) {
-			element = driver.findElement(By.name(orProp.getProperty(objectKey)));
-		}else if(objectKey.endsWith("_classname")) {
-			element = driver.findElement(By.className(orProp.getProperty(objectKey)));
-		}else if(objectKey.endsWith("_xpath")) {
-			element = driver.findElement(By.xpath(orProp.getProperty(objectKey)));
-		}else if(objectKey.endsWith("_css")) {
-			element = driver.findElement(By.cssSelector(orProp.getProperty(objectKey)));
-		}else if(objectKey.endsWith("_linktext")) {
-			element = driver.findElement(By.linkText(orProp.getProperty(objectKey)));
-		}else if(objectKey.endsWith("_partiallinktext")) {
-			element = driver.findElement(By.partialLinkText(orProp.getProperty(objectKey)));
+		try 
+		{
+			if(objectKey.endsWith("_id")) {
+				element = driver.findElement(By.id(orProp.getProperty(objectKey)));
+			}else if(objectKey.endsWith("_name")) {
+				element = driver.findElement(By.name(orProp.getProperty(objectKey)));
+			}else if(objectKey.endsWith("_classname")) {
+				element = driver.findElement(By.className(orProp.getProperty(objectKey)));
+			}else if(objectKey.endsWith("_xpath")) {
+				element = driver.findElement(By.xpath(orProp.getProperty(objectKey)));
+			}else if(objectKey.endsWith("_css")) {
+				element = driver.findElement(By.cssSelector(orProp.getProperty(objectKey)));
+			}else if(objectKey.endsWith("_linktext")) {
+				element = driver.findElement(By.linkText(orProp.getProperty(objectKey)));
+			}else if(objectKey.endsWith("_partiallinktext")) {
+				element = driver.findElement(By.partialLinkText(orProp.getProperty(objectKey)));
+			}
+			
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			//check the visibility of Object
+			wait.until(ExpectedConditions.visibilityOf(element));
+			
+			//Check state of the Object - whether it is clickable or not
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+		} 
+		catch (Exception e) 
+		{
+			//failure - Report that failure
+			reportFailure("Object not found : "+ objectKey);
+			e.printStackTrace();
 		}
 		
 		return element;
@@ -101,13 +119,29 @@ public class GenericKeywords
 	
 	public void verifyTitle()
 	{
-		System.out.println("title is verified.....");
+		String expectedTitle = orProp.getProperty(objectKey);
+		String actualTitle = driver.getTitle();
+		System.out.println("Validate Title....."+ expectedTitle);
+		if(!actualTitle.equals(expectedTitle))
+		{
+			// report the failure
+			reportFailure("Given Title didn't match, Got the title as :-" + actualTitle);
+		}
 	}
 	
 	public void quit()
 	{
 		if(driver!=null)
 			driver.quit();
+	}
+	
+	
+	//  *************************  Reporting Function  ******************************
+	
+	public void reportFailure(String failureMsg)
+	{
+		// fail the test
+		// take the failure Screenshot, and embedded that in project folder & in HTML Report
 	}
 
 }

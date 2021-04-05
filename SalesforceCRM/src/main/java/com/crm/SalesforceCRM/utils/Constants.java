@@ -2,6 +2,7 @@ package com.crm.SalesforceCRM.utils;
 
 public class Constants 
 {
+	public static final String TESTCASES_SHEET = "TestCases";
 	public static final String KEYWORDS_SHEET = "Keywords";
 	public static final String DATA_SHEET = "Data";
 	public static final String TCID_COL = "TCID";
@@ -11,5 +12,6 @@ public class Constants
 	public static final String RUNMODE_COL = "RunMode";
 	public static final String RUNMODE_NO = "N";
 	public static final String RUNMODE_YES = "Y";
+	public static final String PROCEED_COL = "ProceedOnFail";
 
 }

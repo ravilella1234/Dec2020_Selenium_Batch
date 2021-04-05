@@ -46,6 +46,7 @@ public class DriverScript
 				String kWord = xls.getCellData(Constants.KEYWORDS_SHEET, Constants.KEYWORD_COL, rNum);
 				String objectKey = xls.getCellData(Constants.KEYWORDS_SHEET, Constants.OBJECT_COL, rNum);
 				String dataKey = xls.getCellData(Constants.KEYWORDS_SHEET, Constants.TESTDATA_COL, rNum);
+				String ProceedOnFail = xls.getCellData(Constants.KEYWORDS_SHEET, Constants.PROCEED_COL, rNum);
 				String tData = td.get(dataKey);
 				
 				//System.out.println(tcid + "----"+ kWord + "----" + orProp.getProperty(objectKey) + "----" + tData);
