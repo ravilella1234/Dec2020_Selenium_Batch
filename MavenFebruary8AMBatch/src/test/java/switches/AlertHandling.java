@@ -19,7 +19,7 @@ WebDriver driver;
   @BeforeMethod
   public void beforeMethod() 
   {
-	  System.setProperty("webdriver.chrome.driver", "C:\\Users\\DELL\\Desktop\\grid\\chromedriver.exe");
+	 System.setProperty("webdriver.chrome.driver", "C:/Users/DELL/Desktop/chromedriver.exe");
 	  driver=new ChromeDriver();
 	  driver.manage().window().maximize();
 	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);  
@@ -37,7 +37,7 @@ WebDriver driver;
       Thread.sleep(5000);
       
 	  Alert al = driver.switchTo().alert();
-
+	
 	  System.out.println(al.getText());
 	  String expval="Do you really want to delete this Customer?";
 	  Assert.assertEquals(al.getText(), expval);
