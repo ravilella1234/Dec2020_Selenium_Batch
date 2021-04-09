@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="pageobjectmodel.POM_001">
+      <class name="actions.MouseOperations">
         <methods>
-          <include name="afterMethod"/>
-          <include name="customerRegistration"/>
-          <include name="beforeMethod"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="MoveToelement"/>
         </methods>
-      </class> <!-- pageobjectmodel.POM_001 -->
+      </class> <!-- actions.MouseOperations -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
